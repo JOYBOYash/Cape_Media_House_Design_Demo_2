@@ -31,15 +31,17 @@ export default function ScrollingMarquee() {
   });
 
   return (
-    <section id="philosophy" ref={containerRef} className="bg-accent relative z-20 w-full h-[300vh]">
-      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden px-6">
+    <section id="philosophy" ref={containerRef} className="bg-accent relative z-20 w-full h-[400vh] md:h-[300vh]">
+      <div className="sticky top-0 h-auto min-h-[100svh] w-full flex items-center justify-center overflow-hidden px-4 md:px-6 py-28 md:py-0 md:h-screen">
         <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'linear-gradient(#0d0907 1px, transparent 1px), linear-gradient(90deg, #0d0907 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
-        <div className="max-w-[1500px] mx-auto text-center relative z-20 w-full flex items-center justify-center">
-          <h2 className="font-black text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[7vw] leading-[0.9] tracking-tighter uppercase text-center flex flex-wrap justify-center content-center">
+        <div className="max-w-[1500px] mx-auto text-center relative z-20 w-full flex flex-col md:flex-row items-center justify-center">
+          <h2 className="font-black text-[10vw] sm:text-[9vw] md:text-[8vw] lg:text-[7vw] leading-[1.2] md:leading-[0.9] tracking-tight md:tracking-tighter uppercase text-center w-full md:flex md:flex-wrap md:justify-center md:content-center">
              {words.map((word, idx) => (
               <React.Fragment key={idx}>
-                <Word word={word} idx={idx} total={words.length} progress={scrollYProgress} />
-                {idx < words.length - 1 && <span className="text-[#0d0907] opacity-30 mx-2 md:mx-4">/</span>}
+                <span className="inline-block md:inline">
+                  <Word word={word} idx={idx} total={words.length} progress={scrollYProgress} />
+                </span>
+                {idx < words.length - 1 && <span className="text-[#0d0907] opacity-30 mx-[2vw] md:mx-4 inline-block md:inline">/</span>}
               </React.Fragment>
             ))}
           </h2>
